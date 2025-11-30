@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Sebastian Kowalik - Data & AI Architect at Microsoft. Specializing in Generative AI, Cloud Architecture, and Data Solutions.">
-    <meta name="keywords" content="Sebastian Kowalik, Data Architect, AI Architect, Microsoft, Generative AI, Cloud Solutions">
+    <meta name="description" content="Sebastian Kowalik - Data & AI Architect at Microsoft. Specializing in Multimodal AI Agents, Microsoft Fabric, and Next-Generation AI Solutions.">
+    <meta name="keywords" content="Sebastian Kowalik, Data Architect, AI Architect, Microsoft, Multimodal AI, AI Agents, Microsoft Fabric">
     <meta name="author" content="Sebastian Kowalik">
 
-    <title>Sebastian Kowalik | Data & AI Architect</title>
+    <title>Sebastian Kowalik | AI & Data Architect</title>
 
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://sebastiankowalik.com/">
-    <meta property="og:title" content="Sebastian Kowalik | Data & AI Architect">
-    <meta property="og:description" content="Data & AI Architect at Microsoft specializing in Generative AI and Cloud Solutions">
+    <meta property="og:title" content="Sebastian Kowalik | AI & Data Architect">
+    <meta property="og:description" content="Data & AI Architect at Microsoft specializing in Multimodal AI Agents and Next-Generation Solutions">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -24,8 +24,12 @@
             theme: {
                 extend: {
                     colors: {
-                        'microsoft-blue': '#0078D4',
-                        'cascade-purple': '#7C3AED',
+                        'xai-black': '#000000',
+                        'xai-dark': '#0a0a0a',
+                        'xai-gray': '#1a1a1a',
+                        'xai-accent': '#00ff00',
+                        'xai-blue': '#00d9ff',
+                        'xai-purple': '#a855f7',
                     }
                 }
             }
@@ -37,65 +41,97 @@
 
     <!-- Custom CSS -->
     <style>
-        .gradient-text {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        body {
+            background: #000000;
+            color: #ffffff;
+        }
+
+        .gradient-glow {
+            background: linear-gradient(135deg, #00ff00 0%, #00d9ff 50%, #a855f7 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
-        .hero-gradient {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        .glass-effect {
+            background: rgba(26, 26, 26, 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .glow-border {
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+            border: 1px solid rgba(0, 255, 0, 0.5);
         }
 
         .card-hover {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .card-hover:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 255, 0, 0.2);
+        }
+
+        .neon-text {
+            text-shadow: 0 0 10px rgba(0, 255, 0, 0.8),
+                         0 0 20px rgba(0, 255, 0, 0.6),
+                         0 0 30px rgba(0, 255, 0, 0.4);
         }
 
         @keyframes float {
-            0% { transform: translateY(0px); }
+            0%, 100% { transform: translateY(0px); }
             50% { transform: translateY(-20px); }
-            100% { transform: translateY(0px); }
         }
 
         .float-animation {
             animation: float 6s ease-in-out infinite;
         }
+
+        @keyframes pulse-glow {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .pulse-glow {
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        .nav-blur {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 255, 0, 0.1);
+        }
     </style>
 </head>
-<body class="bg-gray-50">
+<body class="bg-xai-black">
     <!-- Navigation -->
-    <nav class="bg-white shadow-sm fixed w-full z-50">
+    <nav class="nav-blur fixed w-full z-50">
         <div class="container mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
-                <div class="text-2xl font-bold gradient-text">SK</div>
+                <div class="text-2xl font-bold gradient-glow">SK</div>
                 <div class="hidden md:flex space-x-8">
-                    <a href="#home" class="text-gray-700 hover:text-microsoft-blue transition">Home</a>
-                    <a href="#about" class="text-gray-700 hover:text-microsoft-blue transition">About</a>
-                    <a href="#projects" class="text-gray-700 hover:text-microsoft-blue transition">Projects</a>
-                    <a href="#skills" class="text-gray-700 hover:text-microsoft-blue transition">Skills</a>
-                    <a href="#contact" class="text-gray-700 hover:text-microsoft-blue transition">Contact</a>
+                    <a href="#home" class="text-gray-300 hover:text-xai-accent transition">Home</a>
+                    <a href="#about" class="text-gray-300 hover:text-xai-accent transition">About</a>
+                    <a href="#projects" class="text-gray-300 hover:text-xai-accent transition">Projects</a>
+                    <a href="#skills" class="text-gray-300 hover:text-xai-accent transition">Skills</a>
+                    <a href="#contact" class="text-gray-300 hover:text-xai-accent transition">Contact</a>
                 </div>
                 <button id="mobile-menu-button" class="md:hidden">
-                    <i class="fas fa-bars text-gray-700"></i>
+                    <i class="fas fa-bars text-gray-300"></i>
                 </button>
             </div>
         </div>
     </nav>
 
     <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden fixed inset-0 bg-white z-40 pt-20">
+    <div id="mobile-menu" class="hidden fixed inset-0 bg-xai-black z-40 pt-20">
         <div class="flex flex-col items-center space-y-6 mt-8">
-            <a href="#home" class="text-xl text-gray-700">Home</a>
-            <a href="#about" class="text-xl text-gray-700">About</a>
-            <a href="#projects" class="text-xl text-gray-700">Projects</a>
-            <a href="#skills" class="text-xl text-gray-700">Skills</a>
-            <a href="#contact" class="text-xl text-gray-700">Contact</a>
+            <a href="#home" class="text-xl text-gray-300 hover:text-xai-accent">Home</a>
+            <a href="#about" class="text-xl text-gray-300 hover:text-xai-accent">About</a>
+            <a href="#projects" class="text-xl text-gray-300 hover:text-xai-accent">Projects</a>
+            <a href="#skills" class="text-xl text-gray-300 hover:text-xai-accent">Skills</a>
+            <a href="#contact" class="text-xl text-gray-300 hover:text-xai-accent">Contact</a>
         </div>
     </div>
 
@@ -103,37 +139,39 @@
     <section id="home" class="min-h-screen flex items-center justify-center pt-20">
         <div class="container mx-auto px-6 text-center">
             <div class="mb-8 float-animation">
-                <div class="w-32 h-32 mx-auto rounded-full hero-gradient p-1">
-                    <div class="w-full h-full rounded-full bg-white flex items-center justify-center">
-                        <i class="fas fa-brain text-5xl gradient-text"></i>
+                <div class="w-32 h-32 mx-auto rounded-full glow-border p-1">
+                    <div class="w-full h-full rounded-full bg-xai-dark flex items-center justify-center">
+                        <i class="fas fa-brain text-5xl gradient-glow"></i>
                     </div>
                 </div>
             </div>
 
-            <h1 class="text-5xl md:text-6xl font-bold text-gray-800 mb-4">
-                Sebastian Kowalik
+            <h1 class="text-6xl md:text-7xl font-bold mb-6">
+                <span class="gradient-glow">Sebastian Kowalik</span>
             </h1>
 
-            <p class="text-2xl md:text-3xl text-gray-600 mb-2">
-                Data & AI Architect
+            <p class="text-3xl md:text-4xl text-gray-300 mb-2">
+                AI & Data Architect
             </p>
 
-            <p class="text-xl text-microsoft-blue font-semibold mb-8">
+            <p class="text-xl text-xai-accent font-semibold mb-8">
                 <i class="fab fa-microsoft"></i> Microsoft
             </p>
 
-            <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-8">
-                Specializing in Generative AI, Cloud Architecture, and Data Solutions
+            <p class="text-lg text-gray-400 max-w-3xl mx-auto mb-12">
+                Building the future with <span class="text-xai-blue">Multimodal AI Agents</span>,
+                <span class="text-xai-purple">Microsoft Fabric</span>, and
+                <span class="text-xai-accent">Next-Generation AI Solutions</span>
             </p>
 
             <div class="flex justify-center space-x-6">
-                <a href="https://github.com/skowalik" target="_blank" class="text-gray-600 hover:text-gray-800 transition">
+                <a href="https://github.com/skowalik" target="_blank" class="text-gray-300 hover:text-xai-accent transition transform hover:scale-110">
                     <i class="fab fa-github text-3xl"></i>
                 </a>
-                <a href="https://www.linkedin.com/in/sebastiankowalik/" target="_blank" class="text-gray-600 hover:text-microsoft-blue transition">
+                <a href="https://www.linkedin.com/in/sebastiankowalik/" target="_blank" class="text-gray-300 hover:text-xai-blue transition transform hover:scale-110">
                     <i class="fab fa-linkedin text-3xl"></i>
                 </a>
-                <a href="mailto:contact@sebastiankowalik.com" class="text-gray-600 hover:text-gray-800 transition">
+                <a href="mailto:contact@sebastiankowalik.com" class="text-gray-300 hover:text-xai-accent transition transform hover:scale-110">
                     <i class="fas fa-envelope text-3xl"></i>
                 </a>
             </div>
@@ -141,40 +179,44 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-20 bg-white">
+    <section id="about" class="py-20 bg-xai-dark">
         <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center mb-12 gradient-text">About Me</h2>
+            <h2 class="text-5xl font-bold text-center mb-12 gradient-glow">About Me</h2>
 
-            <div class="max-w-4xl mx-auto">
-                <div class="grid md:grid-cols-2 gap-8 items-center">
-                    <div>
-                        <p class="text-gray-700 mb-4">
-                            As a <strong>Technical Specialist at Microsoft</strong>, I focus on architecting cutting-edge solutions that leverage the power of Generative AI and modern data platforms.
+            <div class="max-w-5xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="space-y-6">
+                        <p class="text-gray-300 text-lg">
+                            As a <span class="text-xai-accent font-semibold">Technical Specialist at Microsoft</span>, I architect cutting-edge AI solutions leveraging multimodal agents, agentic AI systems, and unified data platforms.
                         </p>
-                        <p class="text-gray-700 mb-4">
-                            Based in <strong>Jersey City, NJ</strong>, I work with enterprise clients and government agencies to transform their data infrastructure and implement AI-driven solutions that deliver real business value.
+                        <p class="text-gray-300 text-lg">
+                            Based in <span class="text-xai-blue font-semibold">Jersey City, NJ</span>, I work with enterprise clients and government agencies to deploy <span class="text-xai-purple">Microsoft Fabric</span>, the next-generation unified analytics platform, and implement AI agents powered by <span class="gradient-glow font-semibold">Claude 4.5, GPT-5, and Gemini 3</span>.
                         </p>
-                        <p class="text-gray-700">
-                            My passion lies at the intersection of data, AI, and cloud technologies, where I help organizations unlock the potential of their data through innovative architectural approaches.
+                        <p class="text-gray-300 text-lg">
+                            My focus is on <span class="neon-text text-xai-accent">autonomous AI systems</span> that process text, images, audio, and video—transforming how organizations interact with their data and users.
                         </p>
                     </div>
 
                     <div class="grid grid-cols-2 gap-4">
-                        <div class="bg-gradient-to-br from-blue-50 to-purple-50 p-6 rounded-lg text-center">
-                            <i class="fas fa-robot text-3xl text-purple-600 mb-2"></i>
-                            <h3 class="font-semibold">AI Solutions</h3>
+                        <div class="glass-effect p-6 rounded-lg text-center card-hover">
+                            <i class="fas fa-robot text-4xl text-xai-accent mb-3"></i>
+                            <h3 class="font-semibold text-lg">AI Agents</h3>
+                            <p class="text-sm text-gray-400">Multimodal & Agentic</p>
                         </div>
-                        <div class="bg-gradient-to-br from-blue-50 to-purple-50 p-6 rounded-lg text-center">
-                            <i class="fas fa-database text-3xl text-blue-600 mb-2"></i>
-                            <h3 class="font-semibold">Data Architecture</h3>
+                        <div class="glass-effect p-6 rounded-lg text-center card-hover">
+                            <i class="fas fa-layer-group text-4xl text-xai-blue mb-3"></i>
+                            <h3 class="font-semibold text-lg">Microsoft Fabric</h3>
+                            <p class="text-sm text-gray-400">Unified Analytics</p>
                         </div>
-                        <div class="bg-gradient-to-br from-blue-50 to-purple-50 p-6 rounded-lg text-center">
-                            <i class="fas fa-cloud text-3xl text-indigo-600 mb-2"></i>
-                            <h3 class="font-semibold">Cloud Platforms</h3>
+                        <div class="glass-effect p-6 rounded-lg text-center card-hover">
+                            <i class="fas fa-brain text-4xl text-xai-purple mb-3"></i>
+                            <h3 class="font-semibold text-lg">LLM Orchestration</h3>
+                            <p class="text-sm text-gray-400">Claude, GPT, Gemini</p>
                         </div>
-                        <div class="bg-gradient-to-br from-blue-50 to-purple-50 p-6 rounded-lg text-center">
-                            <i class="fas fa-shield-alt text-3xl text-green-600 mb-2"></i>
-                            <h3 class="font-semibold">Security & Compliance</h3>
+                        <div class="glass-effect p-6 rounded-lg text-center card-hover">
+                            <i class="fas fa-shield-alt text-4xl text-green-400 mb-3"></i>
+                            <h3 class="font-semibold text-lg">AI TRiSM</h3>
+                            <p class="text-sm text-gray-400">Trust & Security</p>
                         </div>
                     </div>
                 </div>
@@ -183,31 +225,31 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="py-20 bg-gray-50">
+    <section id="projects" class="py-20 bg-xai-black">
         <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center mb-12 gradient-text">Featured Projects</h2>
+            <h2 class="text-5xl font-bold text-center mb-12 gradient-glow">Featured Projects</h2>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
                 <!-- Cascade App -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
-                    <div class="h-48 bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
+                <div class="glass-effect rounded-xl overflow-hidden card-hover">
+                    <div class="h-48 bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center">
                         <i class="fas fa-mobile-alt text-white text-6xl"></i>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-2">Cascade</h3>
-                        <p class="text-gray-600 mb-4">
-                            A beautiful habit tracking iOS app built with SwiftUI, featuring smart reminders, advanced analytics, and 11 language support.
+                        <h3 class="text-2xl font-bold mb-2 text-xai-accent">Cascade</h3>
+                        <p class="text-gray-400 mb-4">
+                            AI-powered habit tracking iOS app with smart notifications, advanced analytics, and multimodal user engagement. Built with SwiftUI and Firebase.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm">SwiftUI</span>
-                            <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm">iOS</span>
-                            <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm">Firebase</span>
+                            <span class="px-3 py-1 bg-purple-900/50 text-purple-300 rounded-full text-sm border border-purple-500/30">SwiftUI</span>
+                            <span class="px-3 py-1 bg-purple-900/50 text-purple-300 rounded-full text-sm border border-purple-500/30">AI Agents</span>
+                            <span class="px-3 py-1 bg-purple-900/50 text-purple-300 rounded-full text-sm border border-purple-500/30">Firebase</span>
                         </div>
                         <div class="flex space-x-4">
-                            <a href="/cascade" class="text-purple-600 hover:text-purple-700 font-semibold">
+                            <a href="/cascade" class="text-xai-accent hover:text-xai-blue font-semibold transition">
                                 Learn More →
                             </a>
-                            <a href="/cascade/privacy" class="text-gray-500 hover:text-gray-600 text-sm">
+                            <a href="/cascade/privacy" class="text-gray-500 hover:text-gray-400 text-sm transition">
                                 Privacy
                             </a>
                         </div>
@@ -215,42 +257,42 @@
                 </div>
 
                 <!-- AI Portfolio -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
-                    <div class="h-48 bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center">
+                <div class="glass-effect rounded-xl overflow-hidden card-hover">
+                    <div class="h-48 bg-gradient-to-br from-blue-600 to-cyan-500 flex items-center justify-center">
                         <i class="fas fa-brain text-white text-6xl"></i>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-2">AI Portfolio</h3>
-                        <p class="text-gray-600 mb-4">
-                            Interactive showcase of AI and machine learning projects, featuring computer vision, NLP, and generative AI implementations.
+                        <h3 class="text-2xl font-bold mb-2 text-xai-blue">AI Research</h3>
+                        <p class="text-gray-400 mb-4">
+                            Interactive showcase of multimodal AI, computer vision, NLP, and autonomous agent implementations using Claude 4.5, GPT-5, and Gemini 3.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Next.js</span>
-                            <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">TypeScript</span>
-                            <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">AI/ML</span>
+                            <span class="px-3 py-1 bg-blue-900/50 text-blue-300 rounded-full text-sm border border-blue-500/30">Next.js</span>
+                            <span class="px-3 py-1 bg-blue-900/50 text-blue-300 rounded-full text-sm border border-blue-500/30">TypeScript</span>
+                            <span class="px-3 py-1 bg-blue-900/50 text-blue-300 rounded-full text-sm border border-blue-500/30">Multimodal AI</span>
                         </div>
-                        <a href="/ai-portfolio" class="text-blue-600 hover:text-blue-700 font-semibold">
+                        <a href="/ai-portfolio" class="text-xai-blue hover:text-xai-accent font-semibold transition">
                             Explore Projects →
                         </a>
                     </div>
                 </div>
 
-                <!-- Azure Synapse Analytics -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
-                    <div class="h-48 bg-gradient-to-br from-green-500 to-teal-500 flex items-center justify-center">
-                        <i class="fas fa-chart-line text-white text-6xl"></i>
+                <!-- Microsoft Fabric -->
+                <div class="glass-effect rounded-xl overflow-hidden card-hover">
+                    <div class="h-48 bg-gradient-to-br from-green-600 to-emerald-500 flex items-center justify-center">
+                        <i class="fas fa-layer-group text-white text-6xl"></i>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-2">Azure Synapse Analytics</h3>
-                        <p class="text-gray-600 mb-4">
-                            Enterprise data platform solutions leveraging Azure Synapse for real-time analytics and big data processing.
+                        <h3 class="text-2xl font-bold mb-2 text-xai-purple">Microsoft Fabric</h3>
+                        <p class="text-gray-400 mb-4">
+                            Next-generation unified analytics platform solutions with Real-Time Intelligence, AI-powered data lakes, and autonomous data pipelines.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm">Azure</span>
-                            <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm">Synapse</span>
-                            <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm">Big Data</span>
+                            <span class="px-3 py-1 bg-green-900/50 text-green-300 rounded-full text-sm border border-green-500/30">Microsoft Fabric</span>
+                            <span class="px-3 py-1 bg-green-900/50 text-green-300 rounded-full text-sm border border-green-500/30">Real-Time AI</span>
+                            <span class="px-3 py-1 bg-green-900/50 text-green-300 rounded-full text-sm border border-green-500/30">OneLake</span>
                         </div>
-                        <a href="https://github.com/skowalik/azure-synapse-samples" target="_blank" class="text-green-600 hover:text-green-700 font-semibold">
+                        <a href="https://github.com/skowalik/fabric-samples" target="_blank" class="text-xai-accent hover:text-xai-blue font-semibold transition">
                             View on GitHub →
                         </a>
                     </div>
@@ -260,50 +302,56 @@
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="py-20 bg-white">
+    <section id="skills" class="py-20 bg-xai-dark">
         <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center mb-12 gradient-text">Technical Skills</h2>
+            <h2 class="text-5xl font-bold text-center mb-12 gradient-glow">Technical Expertise</h2>
 
-            <div class="max-w-4xl mx-auto grid md:grid-cols-3 gap-8">
-                <!-- AI & Machine Learning -->
-                <div>
-                    <h3 class="text-xl font-bold mb-4 text-gray-800">
-                        <i class="fas fa-robot text-purple-600 mr-2"></i>AI & Machine Learning
+            <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-10">
+                <!-- AI & Agents -->
+                <div class="glass-effect p-8 rounded-xl">
+                    <h3 class="text-2xl font-bold mb-6 text-xai-accent">
+                        <i class="fas fa-robot mr-2"></i>AI & Agents
                     </h3>
-                    <ul class="space-y-2 text-gray-600">
-                        <li>• Generative AI (GPT, DALL-E)</li>
-                        <li>• Azure OpenAI Service</li>
-                        <li>• TensorFlow & PyTorch</li>
-                        <li>• Computer Vision</li>
-                        <li>• Natural Language Processing</li>
+                    <ul class="space-y-3 text-gray-300">
+                        <li class="flex items-center"><span class="text-xai-accent mr-2">▸</span> Multimodal AI Agents</li>
+                        <li class="flex items-center"><span class="text-xai-accent mr-2">▸</span> Claude 4.5 Opus/Sonnet</li>
+                        <li class="flex items-center"><span class="text-xai-accent mr-2">▸</span> GPT-5 & GPT-4.5</li>
+                        <li class="flex items-center"><span class="text-xai-accent mr-2">▸</span> Google Gemini 3 Pro</li>
+                        <li class="flex items-center"><span class="text-xai-accent mr-2">▸</span> Autonomous AI Systems</li>
+                        <li class="flex items-center"><span class="text-xai-accent mr-2">▸</span> Computer Vision & NLP</li>
+                        <li class="flex items-center"><span class="text-xai-accent mr-2">▸</span> AI TRiSM & Governance</li>
                     </ul>
                 </div>
 
                 <!-- Data & Analytics -->
-                <div>
-                    <h3 class="text-xl font-bold mb-4 text-gray-800">
-                        <i class="fas fa-database text-blue-600 mr-2"></i>Data & Analytics
+                <div class="glass-effect p-8 rounded-xl">
+                    <h3 class="text-2xl font-bold mb-6 text-xai-blue">
+                        <i class="fas fa-layer-group mr-2"></i>Data Platforms
                     </h3>
-                    <ul class="space-y-2 text-gray-600">
-                        <li>• Azure Synapse Analytics</li>
-                        <li>• Azure Data Factory</li>
-                        <li>• Power BI</li>
-                        <li>• SQL & NoSQL Databases</li>
-                        <li>• Real-time Stream Processing</li>
+                    <ul class="space-y-3 text-gray-300">
+                        <li class="flex items-center"><span class="text-xai-blue mr-2">▸</span> Microsoft Fabric</li>
+                        <li class="flex items-center"><span class="text-xai-blue mr-2">▸</span> Real-Time Intelligence</li>
+                        <li class="flex items-center"><span class="text-xai-blue mr-2">▸</span> OneLake & Lakehouse</li>
+                        <li class="flex items-center"><span class="text-xai-blue mr-2">▸</span> AI-Ready Data</li>
+                        <li class="flex items-center"><span class="text-xai-blue mr-2">▸</span> Power BI & Semantic Models</li>
+                        <li class="flex items-center"><span class="text-xai-blue mr-2">▸</span> Stream Analytics</li>
+                        <li class="flex items-center"><span class="text-xai-blue mr-2">▸</span> Azure OpenAI Service</li>
                     </ul>
                 </div>
 
-                <!-- Cloud & DevOps -->
-                <div>
-                    <h3 class="text-xl font-bold mb-4 text-gray-800">
-                        <i class="fas fa-cloud text-green-600 mr-2"></i>Cloud & DevOps
+                <!-- Cloud & Architecture -->
+                <div class="glass-effect p-8 rounded-xl">
+                    <h3 class="text-2xl font-bold mb-6 text-xai-purple">
+                        <i class="fas fa-cloud mr-2"></i>Cloud & Architecture
                     </h3>
-                    <ul class="space-y-2 text-gray-600">
-                        <li>• Microsoft Azure</li>
-                        <li>• Kubernetes & Docker</li>
-                        <li>• CI/CD Pipelines</li>
-                        <li>• Infrastructure as Code</li>
-                        <li>• Microservices Architecture</li>
+                    <ul class="space-y-3 text-gray-300">
+                        <li class="flex items-center"><span class="text-xai-purple mr-2">▸</span> Microsoft Azure</li>
+                        <li class="flex items-center"><span class="text-xai-purple mr-2">▸</span> Kubernetes & Containers</li>
+                        <li class="flex items-center"><span class="text-xai-purple mr-2">▸</span> AI Orchestration</li>
+                        <li class="flex items-center"><span class="text-xai-purple mr-2">▸</span> Microservices Architecture</li>
+                        <li class="flex items-center"><span class="text-xai-purple mr-2">▸</span> Infrastructure as Code</li>
+                        <li class="flex items-center"><span class="text-xai-purple mr-2">▸</span> CI/CD Pipelines</li>
+                        <li class="flex items-center"><span class="text-xai-purple mr-2">▸</span> Zero Trust Security</li>
                     </ul>
                 </div>
             </div>
@@ -311,37 +359,46 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-gray-50">
+    <section id="contact" class="py-20 bg-xai-black">
         <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center mb-12 gradient-text">Get In Touch</h2>
+            <h2 class="text-5xl font-bold text-center mb-12 gradient-glow">Get In Touch</h2>
 
-            <div class="max-w-2xl mx-auto text-center">
-                <p class="text-gray-700 mb-8">
-                    I'm always interested in discussing new opportunities, innovative projects, and ways to leverage AI and data to solve complex challenges.
+            <div class="max-w-3xl mx-auto text-center">
+                <p class="text-gray-300 text-lg mb-12">
+                    Interested in discussing <span class="text-xai-accent">AI agents</span>,
+                    <span class="text-xai-blue">Microsoft Fabric</span>, or
+                    <span class="text-xai-purple">next-generation AI solutions</span>?
+                    Let's connect and build the future together.
                 </p>
 
-                <div class="flex justify-center space-x-8">
-                    <a href="mailto:contact@sebastiankowalik.com" class="flex items-center space-x-2 text-gray-700 hover:text-microsoft-blue transition">
-                        <i class="fas fa-envelope text-2xl"></i>
-                        <span>Email</span>
+                <div class="flex justify-center space-x-12 mb-12">
+                    <a href="mailto:contact@sebastiankowalik.com" class="flex flex-col items-center space-y-3 text-gray-300 hover:text-xai-accent transition transform hover:scale-110">
+                        <i class="fas fa-envelope text-4xl"></i>
+                        <span class="text-sm">Email</span>
                     </a>
-                    <a href="https://linkedin.com/in/sebastiankowalik" target="_blank" class="flex items-center space-x-2 text-gray-700 hover:text-microsoft-blue transition">
-                        <i class="fab fa-linkedin text-2xl"></i>
-                        <span>LinkedIn</span>
+                    <a href="https://linkedin.com/in/sebastiankowalik" target="_blank" class="flex flex-col items-center space-y-3 text-gray-300 hover:text-xai-blue transition transform hover:scale-110">
+                        <i class="fab fa-linkedin text-4xl"></i>
+                        <span class="text-sm">LinkedIn</span>
                     </a>
-                    <a href="https://github.com/skowalik" target="_blank" class="flex items-center space-x-2 text-gray-700 hover:text-gray-900 transition">
-                        <i class="fab fa-github text-2xl"></i>
-                        <span>GitHub</span>
+                    <a href="https://github.com/skowalik" target="_blank" class="flex flex-col items-center space-y-3 text-gray-300 hover:text-xai-accent transition transform hover:scale-110">
+                        <i class="fab fa-github text-4xl"></i>
+                        <span class="text-sm">GitHub</span>
                     </a>
+                </div>
+
+                <div class="glass-effect p-8 rounded-xl inline-block">
+                    <p class="text-gray-400 mb-2">Based in</p>
+                    <p class="text-2xl font-bold gradient-glow">Jersey City, NJ</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-8">
+    <footer class="bg-xai-dark border-t border-xai-gray py-8">
         <div class="container mx-auto px-6 text-center">
-            <p>&copy; 2024 Sebastian Kowalik. All rights reserved.</p>
+            <p class="text-gray-500">© 2025 Sebastian Kowalik. All rights reserved.</p>
+            <p class="text-gray-600 text-sm mt-2">Built with AI · Powered by Microsoft Azure</p>
         </div>
     </footer>
 
@@ -372,6 +429,16 @@
                     target.scrollIntoView({ behavior: 'smooth' });
                 }
             });
+        });
+
+        // Add scroll effect to nav
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.borderBottom = '1px solid rgba(0, 255, 0, 0.3)';
+            } else {
+                nav.style.borderBottom = '1px solid rgba(0, 255, 0, 0.1)';
+            }
         });
     </script>
 </body>
