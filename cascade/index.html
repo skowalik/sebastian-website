@@ -3,10 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Cascade - The beautiful habit tracker for iOS. Flexible scheduling, smart reminders, widgets, Apple Watch support, and detailed analytics.">
-    <meta name="keywords" content="habit tracker, iOS app, Apple Watch, habits, streaks, productivity, self-improvement">
-    <title>Cascade - The Beautiful Habit Tracker for iOS</title>
+    <meta name="description" content="Cascade - The beautiful habit tracker for iOS with AI coaching. Build lasting habits with personalized recommendations, smart insights, and success predictions.">
+    <meta name="keywords" content="habit tracker, iOS app, Apple Watch, habits, streaks, productivity, self-improvement, AI coach">
+    <title>Cascade - AI-Powered Habit Tracker for iOS</title>
     <style>
+        :root {
+            --deep-navy: #0D2847;
+            --navy: #143557;
+            --ocean-blue: #1E5A8A;
+            --sky-blue: #2B7CB8;
+            --cyan: #3ABEEF;
+            --aqua: #5DD3F5;
+            --light-aqua: #8AE4F9;
+            --gold: #D4A84B;
+            --light-gold: #E8C068;
+            --white: #FFFFFF;
+            --off-white: #F8FAFC;
+            --gray-100: #F1F5F9;
+            --gray-200: #E2E8F0;
+            --gray-500: #64748B;
+            --gray-700: #334155;
+            --gray-900: #0F172A;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -14,382 +33,555 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--gray-700);
+            background: var(--off-white);
             min-height: 100vh;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
+        /* Hero Section */
         .hero {
+            background: linear-gradient(135deg, var(--deep-navy) 0%, var(--navy) 50%, var(--ocean-blue) 100%);
+            padding: 80px 20px 100px;
             text-align: center;
-            padding: 60px 20px;
-            color: white;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
         }
 
-        .logo {
-            font-size: 80px;
-            margin-bottom: 20px;
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 70%, rgba(58, 190, 239, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 30%, rgba(93, 211, 245, 0.1) 0%, transparent 40%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .logo-container {
+            margin-bottom: 30px;
+        }
+
+        .logo-icon {
+            width: 120px;
+            height: 120px;
+            border-radius: 28px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
         }
 
         .hero h1 {
-            font-size: 48px;
+            font-size: 56px;
             font-weight: 700;
-            margin-bottom: 15px;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
         }
 
         .hero .tagline {
             font-size: 24px;
-            opacity: 0.9;
+            color: var(--aqua);
             margin-bottom: 20px;
+            font-weight: 500;
         }
 
         .hero .subtitle {
             font-size: 18px;
-            max-width: 700px;
-            margin: 0 auto 30px;
-            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto 32px;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.7;
         }
 
         .badge-row {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 12px;
             flex-wrap: wrap;
-            margin-bottom: 30px;
+            margin-bottom: 36px;
         }
 
         .platform-badge {
-            background: rgba(255,255,255,0.2);
-            padding: 8px 16px;
-            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 10px 20px;
+            border-radius: 100px;
             font-size: 14px;
             font-weight: 500;
-        }
-
-        .app-store-badge {
-            display: inline-block;
-            margin-top: 20px;
+            color: var(--white);
         }
 
         .app-store-badge img {
-            height: 60px;
+            height: 54px;
+            transition: transform 0.2s ease;
+        }
+
+        .app-store-badge:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
         }
 
         .section-title {
-            text-align: center;
-            color: white;
-            font-size: 36px;
-            margin: 60px 0 40px;
+            font-size: 40px;
             font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
         }
 
-        .features {
+        .section-subtitle {
+            font-size: 18px;
+            color: var(--gray-500);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Feature Cards */
+        .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin: 40px 0;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
         }
 
         .feature-card {
-            background: white;
-            padding: 40px 30px;
-            border-radius: 16px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: var(--white);
+            padding: 32px;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(13, 40, 71, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid var(--gray-100);
         }
 
         .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(13, 40, 71, 0.12);
+            border-color: var(--cyan);
         }
 
         .feature-icon {
-            font-size: 48px;
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--cyan) 0%, var(--sky-blue) 100%);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
             margin-bottom: 20px;
         }
 
         .feature-card h3 {
-            font-size: 22px;
-            color: #667eea;
-            margin-bottom: 15px;
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .feature-card p {
-            color: #666;
-            font-size: 16px;
+            color: var(--gray-500);
+            font-size: 15px;
+            line-height: 1.6;
         }
 
-        .feature-card .pro-badge {
+        .pro-badge {
             display: inline-block;
-            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
-            color: #333;
-            font-size: 11px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--light-gold) 100%);
+            color: var(--deep-navy);
+            font-size: 10px;
             font-weight: 700;
-            padding: 3px 8px;
-            border-radius: 4px;
-            margin-left: 8px;
-            vertical-align: middle;
+            padding: 4px 8px;
+            border-radius: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        .pricing-section {
-            background: white;
-            border-radius: 24px;
-            padding: 50px 40px;
-            margin: 60px 0;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        /* AI Section */
+        .ai-section {
+            background: linear-gradient(135deg, var(--deep-navy) 0%, var(--navy) 100%);
+            padding: 100px 0;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
         }
 
-        .pricing-section h2 {
-            font-size: 36px;
-            color: #333;
-            margin-bottom: 15px;
+        .ai-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(58, 190, 239, 0.2) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .ai-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .ai-header {
             text-align: center;
+            margin-bottom: 60px;
         }
 
-        .pricing-section .subtitle {
+        .ai-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(58, 190, 239, 0.15);
+            border: 1px solid rgba(58, 190, 239, 0.3);
+            padding: 8px 16px;
+            border-radius: 100px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--aqua);
+            margin-bottom: 24px;
+        }
+
+        .ai-header h2 {
+            font-size: 44px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+
+        .ai-header p {
             font-size: 18px;
-            color: #666;
-            text-align: center;
-            margin-bottom: 40px;
+            color: rgba(255, 255, 255, 0.75);
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .ai-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+        }
+
+        .ai-feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 28px;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .ai-feature-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(58, 190, 239, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .ai-feature-card .icon {
+            font-size: 32px;
+            margin-bottom: 16px;
+        }
+
+        .ai-feature-card h4 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--white);
+        }
+
+        .ai-feature-card p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+        }
+
+        /* Pricing Section */
+        .pricing-section {
+            background: var(--white);
+            padding: 100px 0;
         }
 
         .pricing-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            max-width: 900px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            max-width: 800px;
             margin: 0 auto;
         }
 
         .pricing-card {
-            border: 2px solid #eee;
-            border-radius: 16px;
-            padding: 30px;
+            background: var(--white);
+            border: 2px solid var(--gray-200);
+            border-radius: 24px;
+            padding: 40px 32px;
             text-align: center;
-            transition: border-color 0.3s ease, transform 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .pricing-card:hover {
-            border-color: #667eea;
-            transform: translateY(-3px);
+            border-color: var(--cyan);
         }
 
         .pricing-card.featured {
-            border-color: #667eea;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+            border-color: var(--cyan);
+            background: linear-gradient(135deg, rgba(58, 190, 239, 0.03) 0%, rgba(43, 124, 184, 0.03) 100%);
             position: relative;
+            transform: scale(1.02);
         }
 
         .pricing-card.featured::before {
             content: "BEST VALUE";
             position: absolute;
-            top: -12px;
+            top: -14px;
             left: 50%;
             transform: translateX(-50%);
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: linear-gradient(135deg, var(--cyan) 0%, var(--sky-blue) 100%);
+            color: var(--white);
             font-size: 11px;
             font-weight: 700;
-            padding: 4px 12px;
-            border-radius: 12px;
+            padding: 6px 16px;
+            border-radius: 100px;
+            letter-spacing: 0.5px;
         }
 
         .pricing-card h3 {
             font-size: 24px;
-            color: #333;
-            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: 8px;
         }
 
         .pricing-card .price {
-            font-size: 42px;
+            font-size: 48px;
             font-weight: 700;
-            color: #667eea;
-            margin-bottom: 5px;
+            color: var(--ocean-blue);
+            margin-bottom: 4px;
         }
 
         .pricing-card .price-detail {
             font-size: 14px;
-            color: #999;
-            margin-bottom: 25px;
+            color: var(--gray-500);
+            margin-bottom: 28px;
         }
 
         .pricing-card ul {
             list-style: none;
             text-align: left;
-            margin-bottom: 25px;
+            margin-bottom: 28px;
         }
 
         .pricing-card li {
-            padding: 8px 0;
-            color: #555;
+            padding: 10px 0;
+            color: var(--gray-700);
             font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
         .pricing-card li::before {
             content: "✓";
-            color: #667eea;
-            font-weight: bold;
-            margin-right: 10px;
+            color: var(--cyan);
+            font-weight: 700;
+            font-size: 16px;
         }
 
-        .info-section {
-            background: white;
-            border-radius: 16px;
-            padding: 40px;
-            margin: 40px 0;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .info-section h2 {
-            font-size: 32px;
-            color: #667eea;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .info-section p {
-            font-size: 18px;
-            color: #666;
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 30px;
-        }
-
-        .links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .link-button {
-            display: inline-block;
-            padding: 15px 30px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 600;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .link-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-        }
-
+        /* Comparison Section */
         .comparison-section {
-            background: rgba(255,255,255,0.1);
-            border-radius: 16px;
-            padding: 40px;
-            margin: 40px 0;
-            color: white;
-        }
-
-        .comparison-section h2 {
-            font-size: 28px;
-            text-align: center;
-            margin-bottom: 30px;
+            background: var(--gray-100);
+            padding: 80px 0;
         }
 
         .comparison-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            max-width: 800px;
-            margin: 0 auto;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
         }
 
-        .comparison-item {
+        .comparison-card {
+            background: var(--white);
+            padding: 32px;
+            border-radius: 16px;
             text-align: center;
-            padding: 20px;
+            box-shadow: 0 2px 12px rgba(13, 40, 71, 0.06);
         }
 
-        .comparison-item .emoji {
-            font-size: 36px;
-            margin-bottom: 10px;
+        .comparison-card .icon {
+            font-size: 40px;
+            margin-bottom: 16px;
         }
 
-        .comparison-item h4 {
+        .comparison-card h4 {
             font-size: 18px;
+            font-weight: 600;
+            color: var(--gray-900);
             margin-bottom: 8px;
         }
 
-        .comparison-item p {
+        .comparison-card p {
             font-size: 14px;
-            opacity: 0.8;
+            color: var(--gray-500);
+            line-height: 1.5;
         }
 
-        .footer {
+        /* Info Sections */
+        .info-section {
+            padding: 60px 0;
             text-align: center;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .info-section:last-of-type {
+            border-bottom: none;
+        }
+
+        .info-section h2 {
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: 12px;
+        }
+
+        .info-section p {
+            font-size: 16px;
+            color: var(--gray-500);
+            margin-bottom: 24px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .button-row {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--cyan) 0%, var(--sky-blue) 100%);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(58, 190, 239, 0.35);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--gray-700);
+            border: 2px solid var(--gray-200);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--cyan);
+            color: var(--ocean-blue);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--deep-navy);
             padding: 40px 20px;
-            color: white;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .footer p {
+            margin-bottom: 12px;
         }
 
         .footer a {
-            color: white;
+            color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
-            margin: 0 10px;
+            margin: 0 12px;
+            transition: color 0.2s ease;
         }
 
         .footer a:hover {
-            text-decoration: underline;
+            color: var(--aqua);
         }
 
+        /* Responsive */
         @media (max-width: 768px) {
+            .hero {
+                padding: 60px 20px 80px;
+            }
+
             .hero h1 {
                 font-size: 36px;
             }
 
             .hero .tagline {
-                font-size: 18px;
-            }
-
-            .logo {
-                font-size: 60px;
+                font-size: 20px;
             }
 
             .section-title {
-                font-size: 28px;
+                font-size: 32px;
             }
 
-            .features {
+            .ai-header h2 {
+                font-size: 32px;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+
+            .features-grid {
                 grid-template-columns: 1fr;
-            }
-
-            .pricing-section {
-                padding: 30px 20px;
-            }
-
-            .pricing-section h2 {
-                font-size: 28px;
-            }
-
-            .info-section {
-                padding: 30px 20px;
-            }
-
-            .info-section h2 {
-                font-size: 26px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="hero">
-            <div class="logo">🌊</div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="logo-container">
+                <img src="https://raw.githubusercontent.com/skowalik/Cascade/main/cascade_pro_logo.png" alt="Cascade Logo" class="logo-icon">
+            </div>
             <h1>Cascade</h1>
-            <div class="tagline">The Beautiful Habit Tracker</div>
-            <p class="subtitle">Build lasting habits with flexible scheduling, smart reminders, beautiful widgets, and detailed analytics. Available on iPhone, iPad, and Apple Watch.</p>
+            <p class="tagline">AI-Powered Habit Tracker</p>
+            <p class="subtitle">Build lasting habits with personalized AI coaching, smart insights, and beautiful analytics. Available on iPhone, iPad, and Apple Watch.</p>
             
             <div class="badge-row">
                 <span class="platform-badge">📱 iPhone</span>
@@ -398,99 +590,141 @@
                 <span class="platform-badge">🧩 Widgets</span>
             </div>
 
-            <div class="app-store-badge">
-                <a href="https://apps.apple.com" target="_blank">
-                    <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" alt="Download on the App Store">
-                </a>
+            <a href="https://apps.apple.com" target="_blank" class="app-store-badge">
+                <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" alt="Download on the App Store">
+            </a>
+        </div>
+    </section>
+
+    <!-- AI Section -->
+    <section class="ai-section">
+        <div class="container ai-content">
+            <div class="ai-header">
+                <div class="ai-badge">
+                    <span>✨</span>
+                    <span>Exclusive Feature</span>
+                </div>
+                <h2>AI Habit Coach</h2>
+                <p>Unlike Streaks, Habitica, or Productive — Cascade includes built-in AI coaching. Get personalized recommendations powered by on-device machine learning.</p>
+            </div>
+
+            <div class="ai-features">
+                <div class="ai-feature-card">
+                    <div class="icon">📊</div>
+                    <h4>Smart Insights</h4>
+                    <p>Identifies your best performing habits, at-risk streaks, and weekly progress patterns automatically.</p>
+                </div>
+                <div class="ai-feature-card">
+                    <div class="icon">💡</div>
+                    <h4>Personalized Tips</h4>
+                    <p>Time-based recommendations, category balance suggestions, and habit correlations tailored to you.</p>
+                </div>
+                <div class="ai-feature-card">
+                    <div class="icon">🎯</div>
+                    <h4>Success Predictions</h4>
+                    <p>Predicts your likelihood of completing habits based on your history and behavioral patterns.</p>
+                </div>
+                <div class="ai-feature-card">
+                    <div class="icon">🔒</div>
+                    <h4>100% Private</h4>
+                    <p>All AI runs on your device. Your habit data never leaves your phone — no cloud processing.</p>
+                </div>
             </div>
         </div>
+    </section>
 
-        <h2 class="section-title">Powerful Features</h2>
-
-        <div class="features">
-            <div class="feature-card">
-                <div class="feature-icon">📅</div>
-                <h3>Flexible Scheduling</h3>
-                <p>Daily, weekly, or custom schedules. Set specific days, times per week, or create your own pattern that fits your lifestyle.</p>
+    <!-- Features Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Powerful Features</h2>
+                <p class="section-subtitle">Everything you need to build and maintain lasting habits</p>
             </div>
 
-            <div class="feature-card">
-                <div class="feature-icon">🔔</div>
-                <h3>Smart Reminders</h3>
-                <p>Context-aware notifications that remind you at the right time. Multiple reminders per habit with custom messages.</p>
-            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📅</div>
+                    <h3>Flexible Scheduling</h3>
+                    <p>Daily, weekly, or custom schedules. Set specific days, times per week, or create your own pattern that fits your lifestyle.</p>
+                </div>
 
-            <div class="feature-card">
-                <div class="feature-icon">🔥</div>
-                <h3>Streak Tracking</h3>
-                <p>Stay motivated with visual streaks. Track current and best streaks, with streak freezes to protect your progress.</p>
-            </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔔</div>
+                    <h3>Smart Reminders</h3>
+                    <p>Context-aware notifications that remind you at the right time. Multiple reminders per habit with custom messages.</p>
+                </div>
 
-            <div class="feature-card">
-                <div class="feature-icon">📊</div>
-                <h3>Detailed Analytics <span class="pro-badge">PRO</span></h3>
-                <p>Weekly, monthly, and yearly statistics. Heat maps, success rates, best performing days, and exportable reports.</p>
-            </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔥</div>
+                    <h3>Streak Tracking</h3>
+                    <p>Stay motivated with visual streaks. Track current and best streaks, with streak freezes to protect your progress.</p>
+                </div>
 
-            <div class="feature-card">
-                <div class="feature-icon">🤖</div>
-                <h3>AI Habit Coach <span class="pro-badge">PRO</span></h3>
-                <p>Get personalized recommendations, smart insights, and success predictions. One of the only habit trackers with built-in AI coaching — no subscription required.</p>
-            </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Detailed Analytics <span class="pro-badge">PRO</span></h3>
+                    <p>Weekly, monthly, and yearly statistics. Heat maps, success rates, best performing days, and exportable reports.</p>
+                </div>
 
-            <div class="feature-card">
-                <div class="feature-icon">🏷️</div>
-                <h3>Categories & Tags</h3>
-                <p>Organize habits into custom categories with colors and icons. Filter and view by category for better organization.</p>
-            </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3>AI Habit Coach <span class="pro-badge">PRO</span></h3>
+                    <p>Get personalized recommendations, smart insights, and success predictions. One of the only habit trackers with built-in AI.</p>
+                </div>
 
-            <div class="feature-card">
-                <div class="feature-icon">📝</div>
-                <h3>Notes & Journal <span class="pro-badge">PRO</span></h3>
-                <p>Add notes to each completion. Track your mood, energy, and reflections alongside your habits.</p>
-            </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏷️</div>
+                    <h3>Categories & Tags</h3>
+                    <p>Organize habits into custom categories with colors and icons. Filter and view by category for better organization.</p>
+                </div>
 
-            <div class="feature-card">
-                <div class="feature-icon">🧩</div>
-                <h3>Home Screen Widgets</h3>
-                <p>Beautiful widgets to track progress right from your home screen. Small, medium, and large sizes available.</p>
-            </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📝</div>
+                    <h3>Notes & Journal <span class="pro-badge">PRO</span></h3>
+                    <p>Add notes to each completion. Track your mood, energy, and reflections alongside your habits.</p>
+                </div>
 
-            <div class="feature-card">
-                <div class="feature-icon">⌚</div>
-                <h3>Apple Watch App</h3>
-                <p>Complete habits directly from your wrist. Complications and glanceable progress on your watch face.</p>
-            </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🧩</div>
+                    <h3>Home Screen Widgets</h3>
+                    <p>Beautiful widgets to track progress right from your home screen. Small, medium, and large sizes available.</p>
+                </div>
 
-            <div class="feature-card">
-                <div class="feature-icon">🎨</div>
-                <h3>Themes & Customization <span class="pro-badge">PRO</span></h3>
-                <p>Multiple color themes, custom habit colors and icons. Dark mode support with automatic switching.</p>
-            </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⌚</div>
+                    <h3>Apple Watch App</h3>
+                    <p>Complete habits directly from your wrist. Complications and glanceable progress on your watch face.</p>
+                </div>
 
-            <div class="feature-card">
-                <div class="feature-icon">☁️</div>
-                <h3>iCloud Sync</h3>
-                <p>Your habits sync seamlessly across all your Apple devices. Never lose your progress.</p>
-            </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Themes & Customization <span class="pro-badge">PRO</span></h3>
+                    <p>Multiple color themes, custom habit colors and icons. Dark mode support with automatic switching.</p>
+                </div>
 
-            <div class="feature-card">
-                <div class="feature-icon">🔒</div>
-                <h3>Privacy First</h3>
-                <p>Your data stays on your devices and iCloud. No ads, no tracking, no selling your information.</p>
-            </div>
+                <div class="feature-card">
+                    <div class="feature-icon">☁️</div>
+                    <h3>iCloud Sync</h3>
+                    <p>Your habits sync seamlessly across all your Apple devices. Never lose your progress.</p>
+                </div>
 
-            <div class="feature-card">
-                <div class="feature-icon">🏆</div>
-                <h3>Achievements</h3>
-                <p>Unlock achievements as you build habits. Celebrate milestones and stay motivated on your journey.</p>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Privacy First</h3>
+                    <p>Your data stays on your devices and iCloud. No ads, no tracking, no selling your information.</p>
+                </div>
             </div>
         </div>
+    </section>
 
-        <div class="pricing-section" id="pricing">
-            <h2>Simple, Fair Pricing</h2>
-            <p class="subtitle">Start free, upgrade when you're ready. Choose what works for you.</p>
-            
+    <!-- Pricing Section -->
+    <section class="pricing-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Simple, Fair Pricing</h2>
+                <p class="section-subtitle">Start free, upgrade when you're ready</p>
+            </div>
+
             <div class="pricing-cards">
                 <div class="pricing-card">
                     <h3>Free</h3>
@@ -513,96 +747,84 @@
                     <ul>
                         <li>Everything in Free</li>
                         <li>Unlimited habits</li>
-                        <li>Advanced analytics</li>
                         <li>AI Habit Coach</li>
-                        <li>Custom categories</li>
+                        <li>Advanced analytics</li>
                         <li>Notes & journaling</li>
                         <li>Premium themes</li>
                         <li>Data export</li>
                         <li>All future features</li>
-                        <li>🏆 Pay once, yours forever</li>
                     </ul>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="comparison-section">
-            <h2>Why Choose Cascade?</h2>
+    <!-- Why Choose Cascade -->
+    <section class="comparison-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Why Choose Cascade?</h2>
+            </div>
+
             <div class="comparison-grid">
-                <div class="comparison-item">
-                    <div class="emoji">🤖</div>
+                <div class="comparison-card">
+                    <div class="icon">🤖</div>
                     <h4>AI-Powered Coaching</h4>
                     <p>Unlike Streaks, Habitica, or Productive — we have built-in AI recommendations.</p>
                 </div>
-                <div class="comparison-item">
-                    <div class="emoji">💰</div>
+                <div class="comparison-card">
+                    <div class="icon">💰</div>
                     <h4>One-Time Purchase</h4>
                     <p>Pay once, own forever. No subscriptions like other AI habit apps.</p>
                 </div>
-                <div class="comparison-item">
-                    <div class="emoji">🔐</div>
+                <div class="comparison-card">
+                    <div class="icon">🔐</div>
                     <h4>Privacy Focused</h4>
                     <p>AI runs on-device. No cloud processing, no data sharing.</p>
                 </div>
-                <div class="comparison-item">
-                    <div class="emoji">💎</div>
+                <div class="comparison-card">
+                    <div class="icon">💎</div>
                     <h4>Beautiful & Native</h4>
                     <p>Built with SwiftUI for iPhone, iPad & Apple Watch.</p>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- AI Feature Highlight Section -->
-        <div class="info-section" style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);">
-            <h2>🤖 AI Habit Coach — A Rare Feature</h2>
-            <p>Most habit trackers like Streaks, Habitica, Productive, and Way of Life focus only on reminders and streaks. Cascade is one of the few that includes <strong>AI-powered coaching</strong> to help you succeed.</p>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 30px; text-align: left;">
-                <div>
-                    <h4 style="color: #667eea; margin-bottom: 10px;">📊 Smart Insights</h4>
-                    <p style="font-size: 14px; color: #666;">Identifies your best performing habits, at-risk streaks, and weekly progress patterns.</p>
+    <!-- Support Section -->
+    <section class="section">
+        <div class="container">
+            <div class="info-section">
+                <h2>Need Help?</h2>
+                <p>We're here to help you build better habits. Check out our support resources or get in touch.</p>
+                <div class="button-row">
+                    <a href="support/" class="btn btn-primary">Support</a>
+                    <a href="mailto:cascadehabits@gmail.com" class="btn btn-secondary">Contact Us</a>
                 </div>
-                <div>
-                    <h4 style="color: #667eea; margin-bottom: 10px;">💡 Personalized Tips</h4>
-                    <p style="font-size: 14px; color: #666;">Time-based recommendations, category balance suggestions, and habit correlations.</p>
-                </div>
-                <div>
-                    <h4 style="color: #667eea; margin-bottom: 10px;">🎯 Success Predictions</h4>
-                    <p style="font-size: 14px; color: #666;">Predicts your likelihood of completing habits based on your history and patterns.</p>
-                </div>
-                <div>
-                    <h4 style="color: #667eea; margin-bottom: 10px;">🔒 100% Private</h4>
-                    <p style="font-size: 14px; color: #666;">All AI runs on your device. Your habit data never leaves your phone.</p>
+            </div>
+
+            <div class="info-section">
+                <h2>Privacy & Terms</h2>
+                <p>We take your privacy seriously. Learn about how we protect your data.</p>
+                <div class="button-row">
+                    <a href="privacy/" class="btn btn-secondary">Privacy Policy</a>
+                    <a href="terms/" class="btn btn-secondary">Terms of Service</a>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="info-section">
-            <h2>Need Help?</h2>
-            <p>We're here to help you build better habits. Check out our support resources or get in touch.</p>
-            <div class="links">
-                <a href="support/" class="link-button">Support</a>
-                <a href="mailto:cascadehabits@gmail.com" class="link-button">Contact Us</a>
-            </div>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024-2025 Sebastian Kowalik. All rights reserved.</p>
+            <p>
+                <a href="privacy/">Privacy</a>
+                <a href="terms/">Terms</a>
+                <a href="support/">Support</a>
+                <a href="mailto:cascadehabits@gmail.com">Contact</a>
+            </p>
         </div>
-
-        <div class="info-section">
-            <h2>Privacy & Terms</h2>
-            <p>We take your privacy seriously. Learn about how we protect your data and the terms of using Cascade.</p>
-            <div class="links">
-                <a href="privacy/" class="link-button">Privacy Policy</a>
-                <a href="terms/" class="link-button">Terms of Service</a>
-            </div>
-        </div>
-    </div>
-
-    <div class="footer">
-        <p>&copy; 2024-2025 Sebastian Kowalik. All rights reserved.</p>
-        <p>
-            <a href="privacy/">Privacy</a> •
-            <a href="terms/">Terms</a> •
-            <a href="support/">Support</a> •
-            <a href="mailto:cascadehabits@gmail.com">Contact</a>
-        </p>
-    </div>
+    </footer>
 </body>
 </html>
